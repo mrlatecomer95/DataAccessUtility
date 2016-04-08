@@ -152,7 +152,7 @@ namespace DataAccessUtility
                 {
                     cmd.Connection = sqlConn;
                     cmd.CommandText = "SELECT TOP 1 [" + category + "] FROM dbo." + DomainName + strCriteria;
-                    DefaultValue = ()cmd.ExecuteScalar();
+                    DefaultValue = (int)cmd.ExecuteScalar();
                 }
 
             }

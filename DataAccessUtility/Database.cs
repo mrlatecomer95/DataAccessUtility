@@ -8,7 +8,6 @@ namespace DataAccessUtility
 {
     interface IDatabaseItems
     {
-        //string _ConnectionString { get; set; }
         string GetConnectionString();
         void SetConnection(string value);
         DataTable CreateTable(string sql);
@@ -17,7 +16,6 @@ namespace DataAccessUtility
         string DLookUp(string category, string DomainName, string DefaultValue, string Criteria = "");
         int DLookUp(string category, string DomainName, int DefaultValue=0, string Criteria = "");
         bool DLookUp(string category, string DomainName, bool DefaultValue = false, string Criteria = "");
-
         
     }
 
