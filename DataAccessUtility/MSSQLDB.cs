@@ -64,7 +64,6 @@ namespace DataAccessUtility
             }
             catch (Exception ex)
             {
-
                 if (sqlConn.State == ConnectionState.Open) sqlConn.Close();
                 MessageBox.Show(ex.Message.ToString());
 
@@ -98,6 +97,115 @@ namespace DataAccessUtility
                 if (sqlConn.State == ConnectionState.Open) sqlConn.Close();
             }
         }
+
+        public override string DLookUp(string category, string DomainName, string DefaultValue, string Criteria = "")
+        {
+            try
+            {
+                sqlConn.Open();
+                string strCriteria = "";
+                if (Criteria.Trim().Length > 0)
+                {
+                    strCriteria = " WHERE " + Criteria;
+                }
+                else
+                {
+                    strCriteria = Criteria;
+                }
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = sqlConn;
+                    cmd.CommandText = "SELECT TOP 1 [" + category + "] FROM dbo." + DomainName + strCriteria;
+                    DefaultValue = cmd.ExecuteScalar().ToString();
+                }
+           
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            return DefaultValue;
+        }
+
+        public override int DLookUp(string category, string DomainName, int DefaultValue = 0, string Criteria = "")
+        {
+            try
+            {
+                sqlConn.Open();
+                string strCriteria = "";
+                if (Criteria.Trim().Length > 0)
+                {
+                    strCriteria = " WHERE " + Criteria;
+                }
+                else
+                {
+                    strCriteria = Criteria;
+                }
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = sqlConn;
+                    cmd.CommandText = "SELECT TOP 1 [" + category + "] FROM dbo." + DomainName + strCriteria;
+                    DefaultValue = ()cmd.ExecuteScalar();
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            return DefaultValue;
+        }
+
+        public override bool DLookUp(string category, string DomainName, bool DefaultValue = false, string Criteria = "")
+        {
+            try
+            {
+                sqlConn.Open();
+                string strCriteria = "";
+                if (Criteria.Trim().Length > 0)
+                {
+                    strCriteria = " WHERE " + Criteria;
+                }
+                else
+                {
+                    strCriteria = Criteria;
+                }
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = sqlConn;
+                    cmd.CommandText = "SELECT TOP 1 [" + category + "] FROM dbo." + DomainName + strCriteria;
+                    DefaultValue = (bool)cmd.ExecuteScalar();
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (sqlConn.State == ConnectionState.Open)
+                {
+                    sqlConn.Close();
+                }
+            }
+            return DefaultValue;
+        }
+
     }
         
 }

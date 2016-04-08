@@ -34,8 +34,10 @@ namespace Test
             //IDataParameter[] xsp = {_Db.CreateParam("@LName", this.textEdit1.Text),
             //                      _Db.CreateParam("@FName", this.textEdit2.Text),
             //                      _Db.CreateParam("@MName", this.textEdit3.Text)};
-            _Db.RunSql("INSERT INTO dbo.TestTable(LName,)VALUES(@LName)", _Db.CreateParam("@LName", this.textEdit3.Text));
-            this.gridControl1.DataSource = _Db.CreateTable("SELECT * FROM dbo.TestTable");
+            //_Db.RunSql("INSERT INTO dbo.TestTable(LName,)VALUES(@LName)", _Db.CreateParam("@LName", this.textEdit3.Text));
+            //this.gridControl1.DataSource = _Db.CreateTable("SELECT * FROM dbo.TestTable");
+
+            MessageBox.Show(_Db.DLookUp("LName", "TestTable", "", "[LName]= 'MNAMEAEW'"));
 
         }
 

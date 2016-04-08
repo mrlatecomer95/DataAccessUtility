@@ -8,12 +8,16 @@ namespace DataAccessUtility
 {
     interface IDatabaseItems
     {
+        //string _ConnectionString { get; set; }
         string GetConnectionString();
         void SetConnection(string value);
         DataTable CreateTable(string sql);
-
         void RunSql(string strSQL, IDataParameter sqlParam);
         void RunSql(string strSQL, IDataParameter[] sqlParams);
+        string DLookUp(string category, string DomainName, string DefaultValue, string Criteria = "");
+        int DLookUp(string category, string DomainName, int DefaultValue=0, string Criteria = "");
+        bool DLookUp(string category, string DomainName, bool DefaultValue = false, string Criteria = "");
+
         
     }
 
@@ -38,6 +42,10 @@ namespace DataAccessUtility
         public abstract IDataParameter CreateParam(string paramName, object paramValue);
         public abstract void RunSql(string strSQL, IDataParameter SqlParam);
         public abstract void RunSql(string strSQL, IDataParameter[] sqlParams);
+
+        public abstract string DLookUp(string category, string DomainName, string DefaultValue, string Criteria = "");
+        public abstract int DLookUp(string category, string DomainName, int DefaultValue=0, string Criteria = "");
+        public abstract bool DLookUp(string category, string DomainName, bool DefaultValue = false, string Criteria = "");
 
     }
 
